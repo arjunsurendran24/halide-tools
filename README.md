@@ -25,21 +25,3 @@ This extension contributes the following settings:
 * `halide-tools.targetArch` : For cross-compiling specify architecture
 * `halide-tools.targetFeatures`: For cross-compiling specify features wanted
 
-*** Tested on Manjaro Linux 20.1 on Intel i7 CPU ***
-
-## Release Notes
-
-### 0.1.0
-
-- Added support to cross compile to different architectures
-- Added support to view psuedo-code of schdeules if they were to executed as a loop
-- Added support to view lowered statement of functions
-- Added support to generate template for generators
-
-### Planned features
-
-- Test on other OS
-- Support for autoschedulers
-- Generate CMAKE template
-- Web Assembly support
-
