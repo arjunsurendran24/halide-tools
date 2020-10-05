@@ -1,0 +1,14 @@
+node_modules
+.vscode-test/
+*.vsix
+.vscode
+.eslintrc.json
+*.txt
+*.html
+*.a
+*.h 
+*.lib
+*.o
+*.out
+*generator
+

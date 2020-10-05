@@ -1,0 +1,133 @@
+{
+	"name": "halide-tools",
+	"displayName": "halide-tools",
+	"description": "\"Easily generate halide scripts\"",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:halide-tools.createHalideGeneratorBoilerPlate",
+		"onCommand:halide-tools.compileGenerator",
+		"onCommand:halide-tools.startVisualDebugging",
+		"onCommand:halide-tools.getLoweredStatement",
+		"onCommand:halide-tools.getPsuedoCode",
+		"onCommand:halide-tools.compileToFile",
+		"onCommand:halide-tools.compileToStaticLibrary"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "halide-tools.createHalideGeneratorBoilerPlate",
+				"title": "Halide Generator Boilerplate"
+			},
+			{
+				"command": "halide-tools.compileGenerator",
+				"title": "Compile Generator"
+			},
+			{
+				"command": "halide-tools.startVisualDebugging",
+				"title": "Open Visual Debugger"
+			},
+			{
+				"command": "halide-tools.getLoweredStatement",
+				"title": "Get Lowered Statement"
+			},
+			{
+				"command": "halide-tools.getPsuedoCode",
+				"title": "View Pseudo Code"
+			},
+			{
+				"command": "halide-tools.compileToFile",
+				"title": "Compile selected func to header file and object file"
+			},
+			{
+				"command": "halide-tools.compileToStaticLibrary",
+				"title": "Compile selected func to header file and static library"
+			}
+		],
+		"configuration": {
+			"title": "halide-tools",
+			"properties": {
+				"halide-tools.halideInstallationPath" : {
+					"type": "string",
+					"description": "Path to Halide installation",
+					"scope": "machine"
+				},
+				"halide-tools.compilerPath" : {
+					"type": "string",
+					"description": "Path to C++ compiler to be used",
+					"default": "/usr/bin/c++",
+					"scope": "machine"
+				},
+				"halide-tools.cppStandard" : {
+					"type": "string",
+					"default": "c++11",
+					"enum": ["c++11", "c++14", "c++17"]
+				},
+				"halide-tools.binaryPath" : {
+					"type": "string",
+					"description": "Choose the path to save object and library files",
+					"default": "Same as workspace directory",
+					"scope": "machine"
+				},
+				"halide-tools.debugCodeGenLevel" : {
+					"type": "number",
+					"description": "For Lowering. Higher the value more verbose the output",
+					"default": 1,
+					"scope": "window",
+					"maximum": 2,
+					"minimum": 0
+				},
+				"halide-tools.targetOS" : {
+					"type": "string",
+					"description": "For crosscompiling, specify the OS",
+					"enum": ["Android", "Windows", "IOS", "host"],
+					"default": "host"
+				},
+				"halide-tools.targetBits" : {
+					"type": "number",
+					"default": 64,
+					"enum": [32, 64],
+					"description": "For cross-compiling specify number of bits of target architecture"
+				},
+				"halide-tools.targetArch" : {
+					"type": "string",
+					"default": "X86",
+					"enum": ["X86", "ARM"],
+					"description": "For cross-compiling specify architecture"
+				},
+				"halide-tools.targetFeatures" : {
+					"type": "array",
+					"default": [],
+					"description": "For cross-compiling specify features wanted"
+				}
+			}
+
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.49.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	},
+	"dependencies": {
+		"fs": "0.0.1-security",
+		"path": "^0.12.7"
+	}
+}
